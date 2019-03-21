@@ -1,0 +1,18 @@
+mov edi,area
+	mov esi,area_width
+	shl esi,2 ; ori 4
+	
+	mov eax,[ebp+arg3] ; eax=y
+	mov ebx,area_width	;ebx= latime
+	mul ebx	; eax= eax*ebx
+	add eax,[ebp+arg2] ; matrice
+	shl eax,2
+	mov ecx,area_height
+	sub ecx,[ebp+arg3] ; y
+	
+	bucla:
+	mov ebx,eax
+	add ebx,edi
+	mov dword ptr [ebx],0
+	add eax,esi
+	loop bucla
